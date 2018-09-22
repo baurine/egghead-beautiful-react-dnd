@@ -17,6 +17,8 @@ class App extends React.Component {
   onDragStart = result => {
     // document.body.style.color = 'orange'
     // document.body.style.transition = 'background-color 0.2s ease'
+    const homeIndex = this.state.columnOrder.indexOf(result.source.droppableId)
+    this.setState({homeIndex})
   }
 
   onDragUpdate = result => {
@@ -31,6 +33,7 @@ class App extends React.Component {
     // console.log(result)
     // document.body.style.color = 'inherit'
     // document.body.style.backgroundColor = 'inherit'
+    this.setState({homeIndex: null})
 
     const { draggableId, source, destination } = result
     if (!destination) return
@@ -84,13 +87,14 @@ class App extends React.Component {
         onDragEnd={this.onDragEnd}>
         <Container>
           {
-            this.state.columnOrder.map(columnId => {
+            this.state.columnOrder.map((columnId, index) => {
               const column = this.state.columns[columnId]
               const tasks = column.taskIds.map(taskId => this.state.tasks[taskId])
 
               return <Column key={column.id}
                         column={column}
-                        tasks={tasks}/>
+                        tasks={tasks}
+                        isDropDisabled={index < this.state.homeIndex}/>
             })
           }
         </Container>
