@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Task from './Task';
 
 const Container = styled.div`
   margin: 8px;
@@ -18,7 +19,11 @@ export default class Column extends React.Component {
     return (
       <Container>
         <Title>{this.props.column.title}</Title>
-        <TaskList>TaskList</TaskList>
+        <TaskList>
+          {
+            this.props.tasks.map(task => <Task key={task.id} task={task}/>)
+          }
+        </TaskList>
       </Container>
     )
   }
