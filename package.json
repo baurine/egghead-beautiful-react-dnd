@@ -1,6 +1,7 @@
 {
   "name": "egghead-beautiful-react-dnd",
   "version": "0.1.0",
+  "homepage": ".",
   "private": true,
   "dependencies": {
     "@atlaskit/css-reset": "^3.0.1",
