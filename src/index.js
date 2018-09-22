@@ -10,22 +10,22 @@ class App extends React.Component {
   state = initialData
 
   onDragStart = result => {
-    document.body.style.color = 'orange'
-    document.body.style.transition = 'background-color 0.2s ease'
+    // document.body.style.color = 'orange'
+    // document.body.style.transition = 'background-color 0.2s ease'
   }
 
   onDragUpdate = result => {
-    const { destination } = result;
-    const opacity = destination
-      ? destination.index / Object.keys(this.state.tasks).length
-      : 0;
-    document.body.style.backgroundColor = `rgba( 153, 141, 217, ${opacity})`;
+    // const { destination } = result;
+    // const opacity = destination
+    //   ? destination.index / Object.keys(this.state.tasks).length
+    //   : 0;
+    // document.body.style.backgroundColor = `rgba( 153, 141, 217, ${opacity})`;
   }
 
   onDragEnd = result => {
     // console.log(result)
-    document.body.style.color = 'inherit'
-    document.body.style.backgroundColor = 'inherit'
+    // document.body.style.color = 'inherit'
+    // document.body.style.backgroundColor = 'inherit'
 
     const { draggableId, source, destination } = result
     if (!destination) return
