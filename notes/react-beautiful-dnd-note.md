@@ -20,4 +20,25 @@ react-beautiful-dnd 的主要用法：
 
 拖拽源和目标的 droppable type 必须相同。如果 type 不同，就没法拖拽到对方。
 
-另外，从这个视频教程中还学习到了 styled-components 这种 CSS in JS 的用法，用起来不错，可以在后面的项目中尝试。
+另外，从这个视频教程中还学习到了:
+
+- styled-components 这种 CSS in JS 的用法，用起来不错，可以在后面的项目中尝试
+- @atlaskit/css-reset
+- Draggable/Droppable 采用了一种 React 模式，即 children 是函数，而不是 component，好处是节省一层 div?
+
+        <Draggable
+          draggableId={this.props.task.id}
+          isDragDisabled={isDragDisabled}
+          index={this.props.index}>
+          {
+            (provided, snapshot) =>
+            <Container
+              {...provided.draggableProps}
+              {...provided.dragHandleProps}
+              innerRef={provided.innerRef}
+              isDragging={snapshot.isDragging}
+              isDragDisabled={isDragDisabled}>
+              {this.props.task.content}
+            </Container>
+          }
+        </Draggable>
