@@ -9,3 +9,8 @@
 ## Notes
 
 - [React Beautiful Dnd Note](./notes/react-beautiful-dnd-note.md)
+
+## How to start
+
+1. `yarn install`
+1. `yarn start`
