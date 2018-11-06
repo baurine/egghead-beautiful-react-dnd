@@ -8,6 +8,10 @@ import initialData from './initial-data';
 import Column from './Column';
 
 const Container = styled.div`
+  padding: 30px;
+`
+
+const ColumnsContainer = styled.div`
   display: flex;
 `;
 
@@ -106,7 +110,7 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
+      <Container>
         <GitHubLink
           href="https://github.com/baurine/egghead-beautiful-react-dnd">
           Go to Github
@@ -120,7 +124,7 @@ class App extends React.Component {
                     type='column'>
             {
               (provided) =>
-              <Container {...provided.droppableProps} innerRef={provided.innerRef}>
+              <ColumnsContainer {...provided.droppableProps} innerRef={provided.innerRef}>
                 {
                   this.state.columnOrder.map((columnId, index) => {
                     const column = this.state.columns[columnId]
@@ -131,11 +135,11 @@ class App extends React.Component {
                   })
                 }
                 { provided.placeholder }
-              </Container>
+              </ColumnsContainer>
             }
           </Droppable>
         </DragDropContext>
-      </div>
+      </Container>
     )
   }
 }
