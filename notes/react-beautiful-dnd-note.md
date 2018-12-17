@@ -42,3 +42,13 @@ react-beautiful-dnd 的主要用法：
             </Container>
           }
         </Draggable>
+
+### Update
+
+起初我以为这个库是用 HTML5 Drag and Drop API 实现的，后来仔细一想，用 Drag and Drop 的例子，拖拽时都会有半透明的镜像，但这个例子拖拽时并不是半透明，而是完全不透明，通过浏览器的 inspect 发现，在拖拽时，原始对象的 position 变成了 fixed，原来这个库跟 Drag and Drop API 没有半毛钱关系，它是通过监听 mousedown, mousemove, mouseup 来模拟实现的，通过调查发现，GitLab 的看板也是通过这种方式实现 (推测 GitHub 的看板实现技术也不会差太远)。
+
+看了源码，还有一点不太明白的地方就是两个元素之间的碰撞检测逻辑，待进一步深入研究。
+
+初步想了想，可以有的办法，在 onmousemove 事件回调中，遍历每一个其它 elements，检测它的四个角之一有没有在拖拽元素的范围内，或是拖拽元素的四个角有没有在当前 element 的范围之中。
+
+// TODO: 碰撞检测的实现
